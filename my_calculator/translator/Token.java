@@ -3,7 +3,7 @@ package my_calculator.translator;
 /**
  * Хранит тип и имя токена
  */
-class Token
+public class Token
 {
     public enum Type {NONE, OPERATION, OPERAND, OPEN_BRACKET, CLOSE_BRACKET}
 
@@ -19,10 +19,13 @@ class Token
     /**
      * @return тип токена
      */
-    Type getType() { return type; }
+    public Type getType() { return type; }
 
     /**
      * @return имя токена
      */
-    String getName() { return token; }
+    public String getName() { return token; }
+
+    @Override
+    public String toString() { return token; }
 }

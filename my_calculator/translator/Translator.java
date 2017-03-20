@@ -10,7 +10,7 @@ public class Translator
 {
     private String  inputExpression = "";
     private Stack<Token> operators = new Stack<>();
-    private ArrayList<String> outputExpression = new ArrayList<>();
+    private ArrayList<Token> outputExpression = new ArrayList<>();
 
     /**
      * @param expression Исходное выражение в инфиксной форме записи
@@ -18,9 +18,9 @@ public class Translator
     public Translator(String expression) { inputExpression = expression; }
 
     /**
-     * @return Возвращает выражение в постфиксной форме записи
+     * @return Возвращает выражение в постфиксной форме записи0
      */
-    public ArrayList<String> translateToPostfixNotation()
+    public ArrayList<Token> translateToPostfixNotation()
     {
         outputExpression = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class Translator
         for(Token token: tokens) processToken( token );
 
         while(!operators.empty())
-            outputExpression.add( operators.pop().getName() );
+            outputExpression.add( operators.pop() );
 
         return outputExpression;
     }
@@ -46,7 +46,7 @@ public class Translator
 
         if(tokenType == Token.Type.OPERAND)
         {
-            outputExpression.add( token.getName() );
+            outputExpression.add( token );
         }
         else if(tokenType == Token.Type.OPERATION || tokenType == Token.Type.OPEN_BRACKET)
         {
@@ -72,7 +72,7 @@ public class Translator
                 System.exit(1);
             }
 
-            outputExpression.add( top.getName() );
+            outputExpression.add( top );
             top = operators.pop();
         }
     }

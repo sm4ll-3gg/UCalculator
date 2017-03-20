@@ -1,6 +1,7 @@
 package my_calculator;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main
@@ -11,6 +12,6 @@ public class Main
         Calculator calculator = new Calculator( in.nextLine() );
         calculator.calculate();
 
-        System.out.println( "All Right!" );
+        System.out.println( "Результат вычислений равен: " + calculator.getResult() );
     }
 }

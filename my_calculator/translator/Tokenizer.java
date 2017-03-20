@@ -3,26 +3,26 @@ package my_calculator.translator;
 import java.util.ArrayList;
 
 /**
- * Отвечает за разбиение входной строки на "слова"
+ * Отвечает за разбиение входной строки на токены
  */
-class Splitter
+class Tokenizer
 {
-    private enum State {NONE, NUMBER, OPERATION, FUNCTION, OPEN_BRACKET, CLOSE_BRACKET};
+    private enum State {NONE, NUMBER, OPERATION, FUNCTION, OPEN_BRACKET, CLOSE_BRACKET}
 
-    ArrayList<Pair> words = new ArrayList<>();
-    StringBuilder   word = new StringBuilder();
-    boolean         wasThereRadixPoint = false; // Был ли уже десятичный разделитель
-    State           state = State.NONE;
+    private ArrayList<Token> tokens = new ArrayList<>();
+    private StringBuilder   tokenName = new StringBuilder();
+    private boolean         wasThereRadixPoint = false; // Был ли уже десятичный разделитель
+    private State           state = State.NONE;
 
-    String          inputExpression;
+    private String          inputExpression;
 
-    Splitter(String expr) { inputExpression = expr; }
+    Tokenizer(String expr) { inputExpression = expr; }
 
     /**
-     * Разбивает входную строку на "слова"(операнды и операции выражения)
-     * @return списочный массив слов данного выражения
+     * Разбивает входную строку на токены(операнды, операции, функции, открывающиеся и закрывающиеся скобки)
+     * @return списочный массив токенов данного выражения
      */
-    public ArrayList<Pair> getWords()
+    ArrayList<Token> getTokens()
     {
         for(int i = 0; i < inputExpression.length(); ++i)
         {
@@ -31,7 +31,7 @@ class Splitter
             if( switchState(c) )
             {
                 if (c != ' ')
-                    word.append(c);
+                    tokenName.append(c);
                 else if (c == ';')
                     break;
             }
@@ -42,7 +42,7 @@ class Splitter
         if( !addWord() ) // Добавление последнего слова
             System.err.println("Проблема при добавлении последнего слова в " + getClass().getName());
 
-        return words;
+        return tokens;
     }
 
     private boolean switchState(Character c)
@@ -106,40 +106,40 @@ class Splitter
 
     private boolean addWord()
     {
-        String value = word.toString();
+        String value = tokenName.toString();
         if(value.isEmpty()) return true;
 
-        Pair.Type type = Pair.Type.NONE;
+        Token.Type type = Token.Type.NONE;
 
         switch (state)
         {
             case NUMBER:
                 wasThereRadixPoint = false;
-                type = Pair.Type.OPERAND;
+                type = Token.Type.OPERAND;
                 break;
             case OPERATION:
-                type = Pair.Type.OPERATION;
+                type = Token.Type.OPERATION;
                 break;
             case FUNCTION:
                 if( OperationsSet.contain( value.toLowerCase() ) )
-                    type = Pair.Type.OPERATION;
+                    type = Token.Type.OPERATION;
                 else
                     return false;
                 break;
             case OPEN_BRACKET:
-                type = Pair.Type.OPEN_BRACKET;
+                type = Token.Type.OPEN_BRACKET;
                 break;
             case CLOSE_BRACKET:
-                type = Pair.Type.CLOSE_BRACKET;
+                type = Token.Type.CLOSE_BRACKET;
                 break;
             default:
-                System.err.println("Ложное срабатываение Splitter.addWord()"); // Throw
+                System.err.println("Ложное срабатываение Tokenizer.addWord()"); // Throw
                 System.exit(1);
         }
 
-        Pair p = new Pair( type, value );
-        words.add(p);
-        word = new StringBuilder();
+        Token p = new Token( type, value );
+        tokens.add(p);
+        tokenName = new StringBuilder();
 
         return true;
     }

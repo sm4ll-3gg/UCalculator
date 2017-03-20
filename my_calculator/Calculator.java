@@ -2,27 +2,37 @@ package my_calculator;
 
 import my_calculator.translator.Translator;
 
+import java.util.ArrayList;
+
 /**
  * Вычисляет значение входного выражения
  */
 public class Calculator
 {
     //Properties
-    private String expression;
+    private String infixExpression;
+    private ArrayList<String> postfixExpression = new ArrayList<>();
 
     //Methods
-    public Calculator() { expression = ""; }
-    public Calculator(String expression) { this.expression = expression; }
+    Calculator() { infixExpression = ""; }
+    Calculator(String expression) { infixExpression = expression; }
 
-    public String   getExpression() { return expression; }
-    public void     setExpression(String expression) { this.expression = expression; }
+    public String getInfixExpression() { return infixExpression; }
+    public void setInfixExpression(String infixExpression) { this.infixExpression = infixExpression; }
+
+    /**
+     * @return переданное выражение в постфиксной форме
+     */
+    public String getPostfixExpression() { return postfixExpression.toString(); }
 
     /**
      * Начинает вычисление
      */
-    public void calculate()
+    void calculate()
     {
-        Translator translator = new Translator(expression);
-        translator.translate();
+        Translator translator = new Translator(infixExpression);
+        postfixExpression = translator.translateToPostfixNotation();
+
+        System.out.println(postfixExpression.toString());
     }
 }

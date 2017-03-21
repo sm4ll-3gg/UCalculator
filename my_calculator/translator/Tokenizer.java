@@ -7,14 +7,14 @@ import java.util.ArrayList;
  */
 class Tokenizer
 {
-    private enum State {NONE, NUMBER, OPERATION, FUNCTION, OPEN_BRACKET, CLOSE_BRACKET}
+    private enum State {NONE, NUMBER, OPERATION, WORD, OPEN_BRACKET, CLOSE_BRACKET}
 
-    private ArrayList<Token> tokens = new ArrayList<>();
-    private StringBuilder   tokenName = new StringBuilder();
-    private boolean         wasThereRadixPoint = false; // Был ли уже десятичный разделитель
-    private State           state = State.NONE;
+    private ArrayList<Token>    tokens = new ArrayList<>();
+    private StringBuilder       tokenName = new StringBuilder();
+    private boolean             wasThereRadixPoint = false; // Был ли уже десятичный разделитель
+    private State               state = State.NONE;
 
-    private String          inputExpression;
+    private String              inputExpression;
 
     Tokenizer(String expr) { inputExpression = expr; }
 
@@ -30,9 +30,9 @@ class Tokenizer
 
             if( switchState(c) )
             {
-                if (c != ' ')
+                if ( !c.equals(' ') )
                     tokenName.append(c);
-                else if (c == ';')
+                else if ( c.equals(';') )
                     break;
             }
             else
@@ -69,10 +69,10 @@ class Tokenizer
         }
         else if( Character.isLetter(c) )
         {
-            if( state != State.FUNCTION)
+            if( state != State.WORD)
             {
                 isOk = addWord();
-                state = State.FUNCTION;
+                state = State.WORD;
             }
         }
         else if( c == ' ' || c == ';')
@@ -92,7 +92,7 @@ class Tokenizer
         }
         else
         {
-            if( OperationsSet.contain(c) )
+            if( OperationsSet.isOperation(c) )
             {
                 isOk = addWord();
                 state = State.OPERATION;
@@ -120,11 +120,13 @@ class Tokenizer
             case OPERATION:
                 type = Token.Type.OPERATION;
                 break;
-            case FUNCTION:
-                if( OperationsSet.contain( value.toLowerCase() ) )
+            case WORD:
+                String word = value.toLowerCase();
+                if( OperationsSet.isFuncrion( word ) )
                     type = Token.Type.OPERATION;
-                else
-                    return false;
+                else if( OperationsSet.isConstant( word) )
+                    type = Token.Type.CONST;
+                else return false;
                 break;
             case OPEN_BRACKET:
                 type = Token.Type.OPEN_BRACKET;

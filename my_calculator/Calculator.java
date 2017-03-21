@@ -172,7 +172,7 @@ public class Calculator
         double fstOperand = getOperandValue();
         double sndOperand = getOperandValue();
 
-        double value = fstOperand / sndOperand;
+        double value = sndOperand / fstOperand;
 
         return Double.toString( value );
     }

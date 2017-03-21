@@ -5,7 +5,7 @@ package my_calculator.translator;
  */
 public class Token
 {
-    public enum Type {NONE, OPERATION, OPERAND, OPEN_BRACKET, CLOSE_BRACKET}
+    public enum Type {NONE, OPERATION, OPERAND, CONST, OPEN_BRACKET, CLOSE_BRACKET}
 
     private Type type;
     private String token;
@@ -25,6 +25,18 @@ public class Token
      * @return имя токена
      */
     public String getName() { return token; }
+
+    /**
+     * Устанавливает тип и значение токена
+     * @param newType устанавливаемый тип
+     * @param newValue устанавливаемое значение
+     */
+    void setTypeAndValue(Type newType, String newValue)
+    {
+        type = newType;
+        token = newValue;
+    }
+
 
     @Override
     public String toString() { return token; }

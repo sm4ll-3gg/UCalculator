@@ -48,6 +48,14 @@ public class Translator
         {
             outputExpression.add( token );
         }
+        else if(tokenType == Token.Type.CONST)
+        {
+            String value = token.getName();
+            token.setTypeAndValue( Token.Type.OPERAND,
+                                    getValueOfConstant( value ).toString() );
+
+            outputExpression.add( token );
+        }
         else if(tokenType == Token.Type.OPERATION || tokenType == Token.Type.OPEN_BRACKET)
         {
             operators.push( token );
@@ -75,5 +83,29 @@ public class Translator
             outputExpression.add( top );
             top = operators.pop();
         }
+    }
+
+    /**
+     * Возвращает значение переданной констатны
+     * @param constant строка, содержащая литерал константы
+     * @return значение данной константы
+     */
+    private Double getValueOfConstant(String constant)
+    {
+        if( OperationsSet.isConstant(constant) )
+        {
+            if( constant.equals("e") )
+                return StrictMath.E;
+            else if( constant.equals("pi") )
+                return StrictMath.PI;
+        }
+        else
+        {
+            System.err.println("Переданное значение не является константой " + constant);
+            System.exit(1);
+        }
+
+        System.err.println("Переданная константа не поддерживается " + constant);
+        return 0.0;
     }
 }

@@ -11,6 +11,7 @@ class Tokenizer
 
     private ArrayList<Token>    tokens = new ArrayList<>();
     private StringBuilder       tokenName = new StringBuilder();
+
     private boolean             wasThereRadixPoint = false; // Был ли уже десятичный разделитель
     private State               state = State.NONE;
 
@@ -53,8 +54,7 @@ class Tokenizer
         {
             if( state != State.NUMBER)
             {
-                isOk = addWord();
-                state = State.NUMBER;
+                isOk = switchState(State.NUMBER, c);
             }
         }
         else if(c == '.')
@@ -71,37 +71,71 @@ class Tokenizer
         {
             if( state != State.WORD)
             {
-                isOk = addWord();
-                state = State.WORD;
+                isOk = switchState(State.WORD, c);
             }
         }
         else if( c == ' ' || c == ';')
         {
-            isOk = addWord();
-            state = State.NONE;
+            isOk = switchState(State.NONE, c);
         }
         else if( c == '(' || c == '[')
         {
-            isOk = addWord();
-            state = State.OPEN_BRACKET;
+            isOk = switchState(State.OPEN_BRACKET, c);
         }
         else if( c == ')' || c == ']')
         {
-            isOk = addWord();
-            state = State.CLOSE_BRACKET;
+            isOk = switchState(State.CLOSE_BRACKET, c);
         }
         else
         {
             if( OperationsSet.isOperation(c) )
             {
-                isOk = addWord();
-                state = State.OPERATION;
+                isOk = switchState(State.OPERATION, c);
             }
             else
                 return false;
         }
 
         return isOk;
+    }
+
+    /**
+     * Меняет текущее состояние
+     * @param newState новое состояние
+     * @param character символ, на котором происходит смена состояния
+     * @return true, если состояние было успешно изменено.
+     * В противном случае возвращает false
+     */
+    private boolean switchState(State newState, Character character)
+    {
+        if( isNewStateExprected(newState, character) )
+        {
+            boolean isOk = addWord();
+            state = newState;
+
+            return isOk;
+        }
+        else return false;
+    }
+
+
+    /**
+     * Проверяет особые случаи, когда изменение состояния
+     * должно быть предсказуемо
+     * @param newState потенциальное новое состояние
+     * @param character символ, на котором меняется состояние
+     * @return true, если состояние может быть изменено на новое.
+     * В противном случае возвращает false
+     */
+    private boolean isNewStateExprected(State newState, Character character)
+    {
+        if(state == State.WORD &&
+           OperationsSet.isFuncrion( tokenName.toString() ))
+        {
+            // Операнды функций должны быть в круглых скобках
+            return newState == State.OPEN_BRACKET && character.equals('(');
+        }
+        else return true;
     }
 
     private boolean addWord()

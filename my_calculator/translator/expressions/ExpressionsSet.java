@@ -18,6 +18,18 @@ public class ExpressionsSet
        put("^", Operation.OperationType.POWER);
     }};
 
+    private static final HashMap<String, Function.FunctionType> functions = new HashMap<String, Function.FunctionType>()
+    {{
+       put("sin", Function.FunctionType.SIN);
+       put("cos", Function.FunctionType.COS);
+       put("tan", Function.FunctionType.TAN);
+       put("tg", Function.FunctionType.TAN);
+       put("cotan", Function.FunctionType.COTAN);
+       put("cot", Function.FunctionType.COTAN);
+       put("ctg", Function.FunctionType.COTAN);
+       put("pow", Function.FunctionType.POW);
+    }};
+
     /**
      * Возвращает тип операции за счет ее литерала
      * @param literal литерал
@@ -28,9 +40,24 @@ public class ExpressionsSet
         if( operations.containsKey(literal) )
             return operations.get(literal);
         else
-            System.err.println("Переданная операция не содерживается " + literal);
+            System.err.println("Переданная операция не подерживается " + literal);
 
         return Operation.OperationType.NONE;
+    }
+
+    /**
+     * Возвращает тип функция за счет ее литерала
+     * @param literal литерал
+     * @return тип функции
+     */
+    static public Function.FunctionType getFunctionTypeByLiteral(String literal)
+    {
+        if( functions.containsKey(literal) )
+            return functions.get(literal);
+        else
+            System.err.println("Переданная функция не подерживается " + literal);
+
+        return Function.FunctionType.NONE;
     }
 
     /**

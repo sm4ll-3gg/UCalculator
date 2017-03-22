@@ -18,16 +18,6 @@ public class Operation implements Computational
         type = ExpressionsSet.getOperationTypeByLiteral(literal);
     }
 
-    /**
-     * @param literal литерал данной операции
-     * @param parametres массив параметров данной операции
-     */
-    Operation(String literal, double[] parametres)
-    {
-        type = ExpressionsSet.getOperationTypeByLiteral(literal);
-        setParametres(parametres);
-    }
-
     @Override
     public TypeOfExpression getType() { return TypeOfExpression.OPERATION; }
 
@@ -52,14 +42,22 @@ public class Operation implements Computational
         }
     }
 
-    @Override
-    public boolean isCorrectParametresCount(int count)
+    /**
+     * Проверяет корректное ли количество параметров count
+     * передано для данной операции
+     * @return true, если количество параметров коректно.
+     * В противном случае возвращает false
+     */
+    private boolean isCorrectParametresCount(int count)
     {
         return count == 2; // Все операции бинарные
     }
 
-    @Override
-    public double calculateResult()
+    /**
+     * Рассчитывает результат выражение
+     * @return результат
+     */
+    private double calculateResult()
     {
         switch (type)
         {

@@ -3,14 +3,14 @@ package my_calculator.translator;
 /**
  * Хранит тип и имя токена
  */
-public class Token
+public class Expression
 {
     public enum Type {NONE, OPERATION, OPERAND, CONST, OPEN_BRACKET, CLOSE_BRACKET}
 
     private Type type;
     private String token;
 
-    Token(Type _type, String _value)
+    Expression(Type _type, String _value)
     {
         type = _type;
         token = _value;

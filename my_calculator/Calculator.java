@@ -1,6 +1,6 @@
 package my_calculator;
 
-import my_calculator.translator.Token;
+import my_calculator.translator.Expression;
 import my_calculator.translator.Translator;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class Calculator
 {
     //Properties
     private String              infixExpression;
-    private ArrayList<Token>    postfixExpression = new ArrayList<>();
+    private ArrayList<Expression>    postfixExpression = new ArrayList<>();
     private Stack<String>       operands = new Stack<>();
     private double              result = 0.0;
 
@@ -43,7 +43,7 @@ public class Calculator
         Translator translator = new Translator(infixExpression);
         postfixExpression = translator.translateToPostfixNotation();
 
-        for(Token token: postfixExpression)
+        for(Expression token: postfixExpression)
         {
             processToken(token);
         }
@@ -56,14 +56,14 @@ public class Calculator
      * добавляет его на стек или в выходное выражение
      * @param token Обрабатываемый токен
      */
-    private void processToken(Token token)
+    private void processToken(Expression token)
     {
-        Token.Type tokenType = token.getType();
-        if(tokenType == Token.Type.OPERAND)
+        Expression.Type tokenType = token.getType();
+        if(tokenType == Expression.Type.OPERAND)
         {
             operands.push( token.getName() );
         }
-        else if(tokenType == Token.Type.OPERATION)
+        else if(tokenType == Expression.Type.OPERATION)
         {
             executeOperation( token.getName() );
         }
@@ -90,6 +90,11 @@ public class Calculator
         else if( operation.equals("/") && isContainsAsManyOperands(2) )
         {
             operands.push( division() );
+        }
+        else if( ( operation.equals("^") || operation.equals("pow") )
+                && isContainsAsManyOperands(2) )
+        {
+            operands.push( power() );
         }
         else if( operation.equals("sin") && isContainsAsManyOperands(1) )
         {
@@ -175,5 +180,19 @@ public class Calculator
         double value = sndOperand / fstOperand;
 
         return Double.toString( value );
+    }
+
+    /**
+     * Возводит число в степень
+     * @return результат возведения в степень
+     */
+    private String power()
+    {
+        double fstOperand = getOperandValue();
+        double sndOperand = getOperandValue();
+
+        double result = StrictMath.pow(sndOperand, fstOperand);
+
+        return Double.toString(result);
     }
 }

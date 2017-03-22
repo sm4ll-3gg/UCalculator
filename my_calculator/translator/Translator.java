@@ -9,8 +9,8 @@ import java.util.Stack;
 public class Translator
 {
     private String  inputExpression = "";
-    private Stack<Token> operators = new Stack<>();
-    private ArrayList<Token> outputExpression = new ArrayList<>();
+    private Stack<Expression> operators = new Stack<>();
+    private ArrayList<Expression> outputExpression = new ArrayList<>();
 
     /**
      * @param expression Исходное выражение в инфиксной форме записи
@@ -20,14 +20,14 @@ public class Translator
     /**
      * @return Возвращает выражение в постфиксной форме записи0
      */
-    public ArrayList<Token> translateToPostfixNotation()
+    public ArrayList<Expression> translateToPostfixNotation()
     {
         outputExpression = new ArrayList<>();
 
         Tokenizer tokenizer = new Tokenizer(inputExpression);
-        ArrayList<Token> tokens = tokenizer.getTokens();
+        ArrayList<Expression> tokens = tokenizer.getTokens();
 
-        for(Token token: tokens) processToken( token );
+        for(Expression token: tokens) processToken( token );
 
         while(!operators.empty())
             outputExpression.add( operators.pop() );
@@ -40,27 +40,27 @@ public class Translator
      * добавляет его на стек или в выходное выражение
      * @param token Обрабатываемый токен
      */
-    private void processToken(Token token)
+    private void processToken(Expression token)
     {
-        Token.Type tokenType = token.getType();
+        Expression.Type tokenType = token.getType();
 
-        if(tokenType == Token.Type.OPERAND)
+        if(tokenType == Expression.Type.OPERAND)
         {
             outputExpression.add( token );
         }
-        else if(tokenType == Token.Type.CONST)
+        else if(tokenType == Expression.Type.CONST)
         {
             String value = token.getName();
-            token.setTypeAndValue( Token.Type.OPERAND,
+            token.setTypeAndValue( Expression.Type.OPERAND,
                                     getValueOfConstant( value ).toString() );
 
             outputExpression.add( token );
         }
-        else if(tokenType == Token.Type.OPERATION || tokenType == Token.Type.OPEN_BRACKET)
+        else if(tokenType == Expression.Type.OPERATION || tokenType == Expression.Type.OPEN_BRACKET)
         {
             operators.push( token );
         }
-        else if(tokenType == Token.Type.CLOSE_BRACKET)
+        else if(tokenType == Expression.Type.CLOSE_BRACKET)
         {
             processCloseBracketToken();
         }
@@ -71,8 +71,8 @@ public class Translator
      */
     private void processCloseBracketToken()
     {
-        Token top = operators.pop();
-        while( top.getType() != Token.Type.OPEN_BRACKET )
+        Expression top = operators.pop();
+        while( top.getType() != Expression.Type.OPEN_BRACKET )
         {
             if(operators.empty())
             {

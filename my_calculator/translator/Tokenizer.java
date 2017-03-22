@@ -9,13 +9,13 @@ class Tokenizer
 {
     private enum State {NONE, NUMBER, OPERATION, WORD, OPEN_BRACKET, CLOSE_BRACKET}
 
-    private ArrayList<Token>    tokens = new ArrayList<>();
-    private StringBuilder       tokenName = new StringBuilder();
+    private ArrayList<Expression>   tokens = new ArrayList<>();
+    private StringBuilder           tokenName = new StringBuilder();
 
-    private boolean             wasThereRadixPoint = false; // Был ли уже десятичный разделитель
-    private State               state = State.NONE;
+    private boolean                 wasThereRadixPoint = false; // Был ли уже десятичный разделитель
+    private State                   state = State.NONE;
 
-    private String              inputExpression;
+    private String                  inputExpression;
 
     Tokenizer(String expr) { inputExpression = expr; }
 
@@ -23,7 +23,7 @@ class Tokenizer
      * Разбивает входную строку на токены(операнды, операции, функции, открывающиеся и закрывающиеся скобки)
      * @return списочный массив токенов данного выражения
      */
-    ArrayList<Token> getTokens()
+    ArrayList<Expression> getTokens()
     {
         for(int i = 0; i < inputExpression.length(); ++i)
         {
@@ -74,10 +74,10 @@ class Tokenizer
                 isOk = switchState(State.WORD, c);
             }
         }
-        else if( c == ' ' || c == ';')
-        {
-            isOk = switchState(State.NONE, c);
-        }
+//        else if( c == ' ' || c == ';')
+//        {
+//            isOk = switchState(State.NONE, c);
+//        }
         else if( c == '(' || c == '[')
         {
             isOk = switchState(State.OPEN_BRACKET, c);
@@ -143,37 +143,37 @@ class Tokenizer
         String value = tokenName.toString();
         if(value.isEmpty()) return true;
 
-        Token.Type type = Token.Type.NONE;
+        Expression.Type type = Expression.Type.NONE;
 
         switch (state)
         {
             case NUMBER:
                 wasThereRadixPoint = false;
-                type = Token.Type.OPERAND;
+                type = Expression.Type.OPERAND;
                 break;
             case OPERATION:
-                type = Token.Type.OPERATION;
+                type = Expression.Type.OPERATION;
                 break;
             case WORD:
                 String word = value.toLowerCase();
                 if( OperationsSet.isFuncrion( word ) )
-                    type = Token.Type.OPERATION;
+                    type = Expression.Type.OPERATION;
                 else if( OperationsSet.isConstant( word) )
-                    type = Token.Type.CONST;
+                    type = Expression.Type.CONST;
                 else return false;
                 break;
             case OPEN_BRACKET:
-                type = Token.Type.OPEN_BRACKET;
+                type = Expression.Type.OPEN_BRACKET;
                 break;
             case CLOSE_BRACKET:
-                type = Token.Type.CLOSE_BRACKET;
+                type = Expression.Type.CLOSE_BRACKET;
                 break;
             default:
                 System.err.println("Ложное срабатываение Tokenizer.addWord()"); // Throw
                 System.exit(1);
         }
 
-        Token p = new Token( type, value );
+        Expression p = new Expression( type, value );
         tokens.add(p);
         tokenName = new StringBuilder();
 

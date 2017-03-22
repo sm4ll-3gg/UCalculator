@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class ExpressionsSet
 {
-    enum ExpressionType { NONE, OPERATION, FUNCTION, OPERAND, BRACKET }
+    enum ExpressionType { NONE, OPERATION, FUNCTION, CONSTANT ,OPERAND, BRACKET }
 
     private static final HashMap<String, Operation.OperationType> operations = new HashMap<String, Operation.OperationType>()
     {{
@@ -28,6 +28,12 @@ public class ExpressionsSet
        put("cot", Function.FunctionType.COTAN);
        put("ctg", Function.FunctionType.COTAN);
        put("pow", Function.FunctionType.POW);
+    }};
+
+    private static final HashMap<String, Constant.ConstantType> constants = new HashMap<String, Constant.ConstantType>()
+    {{
+        put("e", Constant.ConstantType.E);
+        put("pi", Constant.ConstantType.PI);
     }};
 
     /**
@@ -61,6 +67,21 @@ public class ExpressionsSet
     }
 
     /**
+     * Возвращает тип константы за счет ее литерала
+     * @param literal литерал
+     * @return тип константы
+     */
+    static public Constant.ConstantType getConstantTypeByLiteral(String literal)
+    {
+        if( constants.containsKey(literal) )
+            return constants.get(literal);
+        else
+            System.err.println("Переданная константа не подерживается " + literal);
+
+        return Constant.ConstantType.NONE;
+    }
+
+    /**
      * Возвращает тип выражения по литералу literal
      * @param literal литерал, проверяемого выражения
      * @return если выражение поддерживается, то возвращает его тип.
@@ -70,6 +91,10 @@ public class ExpressionsSet
     {
         if( operations.containsKey(literal) )
             return ExpressionType.OPERATION;
+        else if( functions.containsKey(literal) )
+            return ExpressionType.FUNCTION;
+        else if( constants.containsKey(literal) )
+            return ExpressionType.CONSTANT;
 
         return ExpressionType.NONE;
     }

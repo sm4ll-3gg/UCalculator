@@ -5,7 +5,7 @@ package my_calculator.translator.expressions;
  */
 public interface Expression
 {
-    enum TypeOfExpression {NONE, FUNCTION, OPERATION, OPERAND, CONSTANT, OPEN_BRACKET, CLOSE_BRACKET}
+    enum TypeOfExpression {NONE, CONSTANT, OPERAND, OPERATION, FUNCTION, OPEN_BRACKET, CLOSE_BRACKET}
 
     /**
      * Возвращает тип данного математического выражения

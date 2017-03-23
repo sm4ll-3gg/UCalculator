@@ -7,7 +7,13 @@ import java.util.HashMap;
  */
 public class ExpressionsSet
 {
-    enum ExpressionType { NONE, OPERATION, FUNCTION, CONSTANT ,OPERAND, BRACKET }
+    enum ExpressionType { NONE, CONSTANT, OPERATION, FUNCTION, RACKET }
+
+    private static final HashMap<String, Constant.ConstantType> constants = new HashMap<String, Constant.ConstantType>()
+    {{
+        put("e", Constant.ConstantType.E);
+        put("pi", Constant.ConstantType.PI);
+    }};
 
     private static final HashMap<String, Operation.OperationType> operations = new HashMap<String, Operation.OperationType>()
     {{
@@ -30,10 +36,12 @@ public class ExpressionsSet
        put("pow", Function.FunctionType.POW);
     }};
 
-    private static final HashMap<String, Constant.ConstantType> constants = new HashMap<String, Constant.ConstantType>()
+    private static final HashMap<String, Bracket.BracketType> brackets = new HashMap<String, Bracket.BracketType>()
     {{
-        put("e", Constant.ConstantType.E);
-        put("pi", Constant.ConstantType.PI);
+       put("(", Bracket.BracketType.CIRCLE);
+       put(")", Bracket.BracketType.CIRCLE);
+       put("[", Bracket.BracketType.SQUARE);
+       put("]", Bracket.BracketType.SQUARE);
     }};
 
     /**
@@ -79,6 +87,21 @@ public class ExpressionsSet
             System.err.println("Переданная константа не подерживается " + literal);
 
         return Constant.ConstantType.NONE;
+    }
+
+    /**
+     * Возвращает тип скобки за счет ее литерала
+     * @param literal скобка
+     * @return тип скобки
+     */
+    static public Bracket.BracketType getBracketTypeByLiteral(String literal)
+    {
+        if( brackets.containsKey(literal) )
+            return brackets.get(literal);
+        else
+            System.err.println("Переданная скобка не подерживается " + literal);
+
+        return Bracket.BracketType.NONE;
     }
 
     /**

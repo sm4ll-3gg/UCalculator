@@ -5,9 +5,9 @@ package my_calculator.translator.expressions;
  */
 public class Bracket implements Expression
 {
-    enum TypeOfBracket {NONE, SQUARE, CIRCLE}
+    enum BracketType {NONE, SQUARE, CIRCLE}
 
-    private TypeOfBracket typeOfBracket = TypeOfBracket.NONE;
+    private BracketType bracketType = BracketType.NONE;
     private TypeOfExpression typeOfExpression = TypeOfExpression.NONE;
 
     Bracket(char c) { setTypesByLiteral(c); }
@@ -22,7 +22,7 @@ public class Bracket implements Expression
      * Возвращает тип скобки
      * @return тип скобки
      */
-    public TypeOfBracket getTypeOfBracket() { return typeOfBracket; }
+    public BracketType getBracketType() { return bracketType; }
 
     /**
      * Устанавливает тип выражения и тип скобки в зависимости от литерала
@@ -33,19 +33,19 @@ public class Bracket implements Expression
         switch (literal)
         {
             case '(':
-                typeOfBracket = TypeOfBracket.CIRCLE;
+                bracketType = BracketType.CIRCLE;
                 typeOfExpression = TypeOfExpression.OPEN_BRACKET;
                 break;
             case ')':
-                typeOfBracket = TypeOfBracket.CIRCLE;
+                bracketType = BracketType.CIRCLE;
                 typeOfExpression = TypeOfExpression.CLOSE_BRACKET;
                 break;
             case '[':
-                typeOfBracket = TypeOfBracket.SQUARE;
+                bracketType = BracketType.SQUARE;
                 typeOfExpression = TypeOfExpression.OPEN_BRACKET;
                 break;
             case ']':
-                typeOfBracket = TypeOfBracket.SQUARE;
+                bracketType = BracketType.SQUARE;
                 typeOfExpression = TypeOfExpression.CLOSE_BRACKET;
                 break;
             default:

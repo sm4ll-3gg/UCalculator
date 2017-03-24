@@ -2,6 +2,9 @@ package my_calculator;
 
 import my_calculator.translator.Translator;
 import my_calculator.translator.expressions.Expression;
+import my_calculator.translator.expressions.Function;
+import my_calculator.translator.expressions.Operand;
+import my_calculator.translator.expressions.Operation;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -12,28 +15,49 @@ import java.util.Stack;
 public class Calculator
 {
     //Properties
-    private String              infixExpression;
-    private ArrayList<Expression>    postfixExpression = new ArrayList<>();
-    private Stack<String>       operands = new Stack<>();
-    private double              result = 0.0;
+    private String infixExpression;
+    private ArrayList<Expression> postfixExpression = new ArrayList<>();
+    private Stack<Expression> operands = new Stack<>();
+    private double result = 0.0;
 
     //Methods
-    Calculator() { infixExpression = ""; }
-    Calculator(String expression) { infixExpression = expression.toLowerCase(); }
+    Calculator()
+    {
+        infixExpression = "";
+    }
 
-    public String getInfixExpression() { return infixExpression; }
-    public void setInfixExpression(String infixExpression) { this.infixExpression = infixExpression.toLowerCase(); }
+    Calculator(String expression)
+    {
+        infixExpression = expression.toLowerCase();
+    }
+
+    public String getInfixExpression()
+    {
+        return infixExpression;
+    }
+
+    public void setInfixExpression(String infixExpression)
+    {
+        this.infixExpression = infixExpression.toLowerCase();
+    }
 
     /**
      * @return переданное выражение в постфиксной форме
      */
-    public String getPostfixExpression() { return postfixExpression.toString(); }
+    public String getPostfixExpression()
+    {
+        return postfixExpression.toString();
+    }
 
     /**
      * Возвращает результат вычислений
+     *
      * @return результат
      */
-    public double getResult() { return  result; }
+    public double getResult()
+    {
+        return result;
+    }
 
     /**
      * Начинает вычисление
@@ -43,69 +67,51 @@ public class Calculator
         Translator translator = new Translator(infixExpression);
         postfixExpression = translator.translateToPostfixNotation();
 
-        for(Expression ex: postfixExpression)
-        {
-            System.out.print(ex + "___");
-        }
-//        for(Expression token: postfixExpression)
-//        {
-//            processToken(token);
-//        }
+        for (Expression token : postfixExpression)
+            processToken(token);
 
-//        result = getOperandValue(); //Результат вычислений лежит на вершине стека
+        result = operands.peek().getValue(); //Результат вычислений лежит на вершине стека
     }
 
     /**
      * В зависимости от значения токена,
      * добавляет его на стек или в выходное выражение
+     *
      * @param token Обрабатываемый токен
      */
     private void processToken(Expression token)
     {
-//        Expression.BracketType tokenType = token.getType();
-//        if(tokenType == Expression.BracketType.OPERAND)
-//        {
-//            operands.push( token.getName() );
-//        }
-//        else if(tokenType == Expression.BracketType.OPERATION)
-//        {
-//            executeOperation( token.getName() );
-//        }
+        Expression.Type tokenType = token.getType();
+        if (tokenType == Expression.Type.OPERAND)
+        {
+            operands.push(token);
+        }
+        else if (tokenType == Expression.Type.OPERATION)
+        {
+            executeOperation(token);
+        }
+        else if (tokenType == Expression.Type.FUNCTION)
+        {
+            executeFunction(token);
+        }
     }
 
     /**
      * Выполняет операцию и кладет результат на вершину стека
-     * @param operation литерал операции или имя функции
+     *
+     * @param expr литерал операции или имя функции
      */
-    private void executeOperation(String operation)
+    private void executeOperation(Expression expr)
     {
-        if( operation.equals("+") && isContainsAsManyOperands(2) )
+        if (expr.getType() == Expression.Type.OPERATION)
         {
-            operands.push( sum() );
-        }
-        else if( operation.equals("-") && isContainsAsManyOperands(2) )
-        {
-            operands.push( subtraction() );
-        }
-        else if( operation.equals("*") && isContainsAsManyOperands(2) )
-        {
-            operands.push( multiplication() );
-        }
-        else if( operation.equals("/") && isContainsAsManyOperands(2) )
-        {
-            operands.push( division() );
-        }
-        else if( ( operation.equals("^") || operation.equals("pow") )
-                && isContainsAsManyOperands(2) )
-        {
-            operands.push( power() );
-        }
-        else if( operation.equals("sin") && isContainsAsManyOperands(1) )
-        {
-            double operand = Double.parseDouble( operands.pop() );
-            Double result = StrictMath.sin(operand);
+            Operation o = (Operation) expr;
+            int parametrCount = o.getParametresCount();
 
-            operands.push( result.toString() );
+            o.setParametres(getParametres(parametrCount));
+
+            operands.push(new Operand(o.getValue()));
+
         }
         else
         {
@@ -114,8 +120,40 @@ public class Calculator
         }
     }
 
+    private void executeFunction(Expression expr)
+    {
+        if (expr.getType() == Expression.Type.FUNCTION)
+        {
+            Function o = (Function) expr;
+            int parametrCount = o.getParametresCount();
+
+            o.setParametres(getParametres(parametrCount));
+
+            operands.push(new Operand(o.getValue()));
+        }
+    }
+
+    private Double[] getParametres(int count)
+    {
+        ArrayList<Double> parametres = new ArrayList<>();
+        for (int i = 0; i < count; ++i)
+        {
+            if (!operands.empty())
+            {
+                Double value = operands.pop().getValue();
+                parametres.add(value);
+            }
+        }
+
+        Double[] array = new Double[count];
+        parametres.toArray(array);
+
+        return array;
+    }
+
     /**
      * Проверяет наличие данного количества операндов на стеке
+     *
      * @param count количество операндов;
      * @return true если содержится нужное количество операндов.
      * В противном случае возвращает false;
@@ -123,80 +161,5 @@ public class Calculator
     private boolean isContainsAsManyOperands(int count)
     {
         return count > 0 && operands.size() >= count;
-    }
-
-    /**
-     * Возвращает вещественное значение операнда
-     * @return значение операнда
-     */
-    private double getOperandValue()
-    {
-        return Double.parseDouble( operands.pop() );
-    }
-
-    /**
-     * Возвращает сумму первых двух элементов стека в виде строки
-     */
-    private String sum()
-    {
-        double fstOperand = getOperandValue();
-        double sndOperand = getOperandValue();
-
-        double value = fstOperand + sndOperand;
-
-        return Double.toString( value );
-    }
-
-    /**
-     * Возвращает разность первых двух элементов стека в виде строки
-     */
-    private String subtraction()
-    {
-        double fstOperand = getOperandValue();
-        double sndOperand = getOperandValue();
-
-        double value = sndOperand - fstOperand;
-
-        return Double.toString( value );
-    }
-
-    /**
-     * Возвращает произведение первых двух элементов стека в виде строки
-     */
-    private String multiplication()
-    {
-        double fstOperand = getOperandValue();
-        double sndOperand = getOperandValue();
-
-        double value = fstOperand * sndOperand;
-
-        return Double.toString( value );
-    }
-
-    /**
-     * Возвращает частное первых двух элементов стека в виде строки
-     */
-    private String division()
-    {
-        double fstOperand = getOperandValue();
-        double sndOperand = getOperandValue();
-
-        double value = sndOperand / fstOperand;
-
-        return Double.toString( value );
-    }
-
-    /**
-     * Возводит число в степень
-     * @return результат возведения в степень
-     */
-    private String power()
-    {
-        double fstOperand = getOperandValue();
-        double sndOperand = getOperandValue();
-
-        double result = StrictMath.pow(sndOperand, fstOperand);
-
-        return Double.toString(result);
     }
 }

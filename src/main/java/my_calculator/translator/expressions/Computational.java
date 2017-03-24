@@ -11,4 +11,6 @@ public interface Computational extends Expression
      * @param parametres массив параметров
      */
     void setParametres(Double[] parametres);
+
+    int getParametresCount();
 }

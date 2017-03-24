@@ -25,6 +25,23 @@ public class Function implements Computational
     }
 
     @Override
+    public int getParametresCount()
+    {
+        if( type == FunctionType.SIN ||
+            type == FunctionType.COS ||
+            type == FunctionType.TAN ||
+            type == FunctionType.COTAN)
+        {
+            return 1;
+        }
+        else if( type == FunctionType.POW)
+            return 2;
+
+        System.err.println("Запрос параметров неподдерживаемой функции");
+        return 0;
+    }
+
+    @Override
     public Type getType()
     {
         return Type.FUNCTION;

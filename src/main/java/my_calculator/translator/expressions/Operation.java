@@ -48,6 +48,12 @@ public class Operation implements Computational
         return type.toString();
     }
 
+    @Override
+    public int getParametresCount()
+    {
+        return 2;
+    }
+
     /**
      * Проверяет корректное ли количество параметров count
      * передано для данной операции

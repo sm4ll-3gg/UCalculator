@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5bfcd49-0c26-4caf-b144-7d95e08b2e8b" name="Default" comment="Удаление остатков старого алгоритма токенезации">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Expression.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/OperationsSet.java" afterPath="" />
+    <list default="true" id="f5bfcd49-0c26-4caf-b144-7d95e08b2e8b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input.txt" afterPath="$PROJECT_DIR$/input.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Bracket.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Bracket.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Constant.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Expression.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Expression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Computational.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Computational.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operand.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,8 +39,8 @@
       <file leaf-file-name="Tokenizer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+            <state relative-caret-position="168">
+              <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,8 +51,8 @@
       <file leaf-file-name="Translator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="26" column="33" lean-forward="false" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,33 +60,80 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Calculator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Calculator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="62" column="38" lean-forward="true" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
+            <state relative-caret-position="190">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#666#667#0" expanded="true" />
+                <element signature="e#702#703#0" expanded="true" />
+                <element signature="e#743#744#0" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#847#848#0" expanded="true" />
+                <element signature="e#885#886#0" expanded="true" />
+                <element signature="e#951#952#0" expanded="true" />
+                <element signature="e#1019#1020#0" expanded="true" />
+                <element signature="e#1139#1140#0" expanded="true" />
+                <element signature="e#1190#1191#0" expanded="true" />
+                <element signature="e#1314#1315#0" expanded="true" />
+                <element signature="e#1343#1344#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="input.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Operand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="e#225#226#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
+              <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bracket.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Bracket.java">
+      <file leaf-file-name="Operation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            <state relative-caret-position="168">
+              <caret line="36" column="16" lean-forward="false" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+              <folding>
+                <element signature="e#1201#1202#0" expanded="true" />
+                <element signature="e#1225#1226#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Function.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="39" column="73" lean-forward="false" selection-start-line="39" selection-start-column="73" selection-end-line="39" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Computational.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Computational.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -168,18 +209,18 @@
         <option value="$PROJECT_DIR$/src/my_calculator/translator/expressions/ExpressionsSet.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/ExpressionsSet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Computational.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Constant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Parametr.java" />
-        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Expression.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Bracket.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Computational.java" />
+        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java" />
         <option value="$PROJECT_DIR$/input.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java" />
       </list>
     </option>
   </component>
@@ -365,40 +406,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="my_calculator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="translator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="expressions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -409,7 +416,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="settings.editor.splitter.proportion" value="0.26029962" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -873,7 +880,7 @@
       <workItem from="1490286907922" duration="551000" />
       <workItem from="1490287572309" duration="3718000" />
       <workItem from="1490300014320" duration="7864000" />
-      <workItem from="1490341456207" duration="10967000" />
+      <workItem from="1490341456207" duration="14592000" />
     </task>
     <task id="LOCAL-00001" summary="Преобразование выражения в постфиксную форму Рефакторинг кода">
       <created>1490027400908</created>
@@ -973,11 +980,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490354935146</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Преобразования алгоритма перевода в ОПН для нового алгоритма токенизации">
+      <created>1490357517934</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1490357517934</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107192000" />
+    <option name="totallyTimeSpent" value="110817000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1062,59 +1076,48 @@
     <MESSAGE value="Исправлена поддержка функций" />
     <MESSAGE value="Фикс багов токенезации" />
     <MESSAGE value="Удаление остатков старого алгоритма токенезации" />
-    <option name="LAST_COMMIT_MESSAGE" value="Удаление остатков старого алгоритма токенезации" />
+    <MESSAGE value="Преобразования алгоритма перевода в ОПН для нового алгоритма токенизации" />
+    <option name="LAST_COMMIT_MESSAGE" value="Преобразования алгоритма перевода в ОПН для нового алгоритма токенизации" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java</url>
-          <line>31</line>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java</url>
+          <line>66</line>
           <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java</url>
-          <line>53</line>
-          <properties />
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java</url>
-          <line>115</line>
-          <properties />
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java</url>
-          <line>155</line>
-          <properties />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java</url>
-          <line>124</line>
-          <properties />
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java</url>
-          <line>58</line>
+          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java</url>
+          <line>83</line>
           <properties />
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operand.java</url>
-          <line>11</line>
+          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java</url>
+          <line>105</line>
           <properties />
-          <option name="timeStamp" value="31" />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java</url>
+          <line>137</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java</url>
+          <line>38</line>
+          <properties />
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="32" />
+      <option name="time" value="37" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1362,14 +1365,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Computational.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/lang/Object.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -1400,17 +1395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding>
-            <element signature="e#1106#1107#0" expanded="true" />
-            <element signature="e#1144#1145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="738">
@@ -1427,32 +1411,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="39" column="49" lean-forward="false" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
-          <folding>
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1464,28 +1427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#275#276#0" expanded="true" />
-            <element signature="e#316#317#0" expanded="true" />
-            <element signature="e#346#347#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="62" column="38" lean-forward="true" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Bracket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1494,12 +1435,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Computational.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="266">
+          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="39" column="73" lean-forward="false" selection-start-line="39" selection-start-column="73" selection-end-line="39" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#225#226#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="36" column="16" lean-forward="false" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+          <folding>
+            <element signature="e#1201#1202#0" expanded="true" />
+            <element signature="e#1225#1226#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1507,8 +1485,40 @@
     <entry file="file://$PROJECT_DIR$/input.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
+          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="26" column="33" lean-forward="false" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+            <element signature="e#743#744#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#847#848#0" expanded="true" />
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#951#952#0" expanded="true" />
+            <element signature="e#1019#1020#0" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

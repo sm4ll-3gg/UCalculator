@@ -8,12 +8,12 @@ public class Operation implements Computational
     enum OperationType {NONE, PLUS, MINUS, MULTIPLICATION, DIVISION, POWER}
 
     private OperationType   type = OperationType.NONE;
-    private double[]        parametres = null;
+    private Double[]        parametres = null;
 
     /**
      * @param literal литерал данной операции
      */
-    Operation(String literal)
+    public Operation(String literal)
     {
         type = ExpressionsSet.getOperationTypeByLiteral(literal);
     }
@@ -34,12 +34,18 @@ public class Operation implements Computational
     }
 
     @Override
-    public void setParametres(double[] parametres)
+    public void setParametres(Double[] parametres)
     {
         if( isCorrectParametresCount(parametres.length) )
         {
             this.parametres = parametres;
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        return type.toString();
     }
 
     /**

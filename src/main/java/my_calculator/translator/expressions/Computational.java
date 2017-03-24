@@ -10,5 +10,5 @@ public interface Computational extends Expression
      * для вычисляемого выражения
      * @param parametres массив параметров
      */
-    void setParametres(double[] parametres);
+    void setParametres(Double[] parametres);
 }

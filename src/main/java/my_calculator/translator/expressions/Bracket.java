@@ -5,18 +5,23 @@ package my_calculator.translator.expressions;
  */
 public class Bracket implements Expression
 {
-    enum BracketType {NONE, SQUARE, CIRCLE}
+    public enum BracketType {NONE, OPEN, CLOSE}
 
     private BracketType bracketType = BracketType.NONE;
-    private TypeOfExpression typeOfExpression = TypeOfExpression.NONE;
 
-    Bracket(char c) { setTypesByLiteral(c); }
+    public Bracket(char c) { setTypesByLiteral(c); }
 
     @Override
-    public TypeOfExpression getType() { return typeOfExpression; }
+    public TypeOfExpression getType() { return TypeOfExpression.BRACKET; }
 
     @Override
     public Double getValue() { return null; }
+
+    @Override
+    public String toString()
+    {
+        return bracketType.toString();
+    }
 
     /**
      * Возвращает тип скобки
@@ -33,20 +38,10 @@ public class Bracket implements Expression
         switch (literal)
         {
             case '(':
-                bracketType = BracketType.CIRCLE;
-                typeOfExpression = TypeOfExpression.OPEN_BRACKET;
+                bracketType = BracketType.OPEN;
                 break;
             case ')':
-                bracketType = BracketType.CIRCLE;
-                typeOfExpression = TypeOfExpression.CLOSE_BRACKET;
-                break;
-            case '[':
-                bracketType = BracketType.SQUARE;
-                typeOfExpression = TypeOfExpression.OPEN_BRACKET;
-                break;
-            case ']':
-                bracketType = BracketType.SQUARE;
-                typeOfExpression = TypeOfExpression.CLOSE_BRACKET;
+                bracketType = BracketType.CLOSE;
                 break;
             default:
                 System.err.println("Неподдерживаемый тип скобок " + literal );

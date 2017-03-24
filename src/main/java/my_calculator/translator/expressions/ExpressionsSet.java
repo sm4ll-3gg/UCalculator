@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class ExpressionsSet
 {
-    enum ExpressionType { NONE, CONSTANT, OPERATION, FUNCTION, RACKET }
+    public enum ExpressionType { NONE, CONSTANT, OPERATION, FUNCTION, BRACKET }
 
     private static final HashMap<String, Constant.ConstantType> constants = new HashMap<String, Constant.ConstantType>()
     {{
@@ -36,12 +36,10 @@ public class ExpressionsSet
        put("pow", Function.FunctionType.POW);
     }};
 
-    private static final HashMap<String, Bracket.BracketType> brackets = new HashMap<String, Bracket.BracketType>()
+    private static final HashMap<Character, Bracket.BracketType> brackets = new HashMap<Character, Bracket.BracketType>()
     {{
-       put("(", Bracket.BracketType.CIRCLE);
-       put(")", Bracket.BracketType.CIRCLE);
-       put("[", Bracket.BracketType.SQUARE);
-       put("]", Bracket.BracketType.SQUARE);
+       put('(', Bracket.BracketType.OPEN);
+       put(')', Bracket.BracketType.CLOSE);
     }};
 
     /**
@@ -94,7 +92,7 @@ public class ExpressionsSet
      * @param literal скобка
      * @return тип скобки
      */
-    static public Bracket.BracketType getBracketTypeByLiteral(String literal)
+    static public Bracket.BracketType getBracketTypeByLiteral(Character literal)
     {
         if( brackets.containsKey(literal) )
             return brackets.get(literal);
@@ -118,6 +116,8 @@ public class ExpressionsSet
             return ExpressionType.FUNCTION;
         else if( constants.containsKey(literal) )
             return ExpressionType.CONSTANT;
+        else if( brackets.containsKey(literal) )
+            return ExpressionType.BRACKET;
 
         return ExpressionType.NONE;
     }

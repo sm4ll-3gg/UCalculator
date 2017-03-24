@@ -9,7 +9,7 @@ public class Constant implements Expression
 
     ConstantType type = ConstantType.NONE;
 
-    Constant(String literal)
+    public Constant(String literal)
     {
         type = ExpressionsSet.getConstantTypeByLiteral(literal);
     }
@@ -32,5 +32,11 @@ public class Constant implements Expression
         }
 
         return 0.0;
+    }
+
+    @Override
+    public String toString()
+    {
+        return getClass().getName() + " " + type;
     }
 }

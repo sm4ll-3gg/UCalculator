@@ -19,10 +19,10 @@ public class Calculator
 
     //Methods
     Calculator() { infixExpression = ""; }
-    Calculator(String expression) { infixExpression = expression; }
+    Calculator(String expression) { infixExpression = expression.toLowerCase(); }
 
     public String getInfixExpression() { return infixExpression; }
-    public void setInfixExpression(String infixExpression) { this.infixExpression = infixExpression; }
+    public void setInfixExpression(String infixExpression) { this.infixExpression = infixExpression.toLowerCase(); }
 
     /**
      * @return переданное выражение в постфиксной форме
@@ -41,14 +41,14 @@ public class Calculator
     public void calculate()
     {
         Translator translator = new Translator(infixExpression);
-        postfixExpression = translator.translateToPostfixNotation();
+/*        postfixExpression = */translator.translateToPostfixNotation();
+//
+//        for(Expression token: postfixExpression)
+//        {
+//            processToken(token);
+//        }
 
-        for(Expression token: postfixExpression)
-        {
-            processToken(token);
-        }
-
-        result = getOperandValue(); //Результат вычислений лежит на вершине стека
+//        result = getOperandValue(); //Результат вычислений лежит на вершине стека
     }
 
     /**

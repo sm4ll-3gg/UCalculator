@@ -7,9 +7,9 @@ public class Operand implements Expression
 {
     private double value = 0;
 
-    Operand(double oValue)
+    public Operand(String oValue)
     {
-        value = oValue;
+        value = Double.parseDouble(oValue);
     }
 
     @Override
@@ -17,4 +17,11 @@ public class Operand implements Expression
 
     @Override
     public Double getValue() { return value; }
+
+
+    @Override
+    public String toString()
+    {
+        return getType() + " " + getValue().toString();
+    }
 }

@@ -5,7 +5,7 @@ package my_calculator.translator.expressions;
  */
 public interface Expression
 {
-    enum TypeOfExpression {NONE, CONSTANT, OPERAND, OPERATION, FUNCTION, OPEN_BRACKET, CLOSE_BRACKET}
+    enum TypeOfExpression {NONE, CONSTANT, OPERAND, OPERATION, FUNCTION, BRACKET}
 
     /**
      * Возвращает тип данного математического выражения
@@ -19,5 +19,6 @@ public interface Expression
      */
     Double  getValue();
 
-
+    @Override
+    String toString();
 }

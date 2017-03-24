@@ -1,5 +1,7 @@
 package my_calculator.translator;
 
+import my_calculator.translator.expressions.Expression;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -27,10 +29,13 @@ public class Translator
         Tokenizer tokenizer = new Tokenizer(inputExpression);
         ArrayList<Expression> tokens = tokenizer.getTokens();
 
-        for(Expression token: tokens) processToken( token );
-
-        while(!operators.empty())
-            outputExpression.add( operators.pop() );
+        for(Expression exp : tokens)
+            System.out.println(exp + " ");
+//
+//        for(Expression token: tokens) processToken( token );
+//
+//        while(!operators.empty())
+//            outputExpression.add( operators.pop() );
 
         return outputExpression;
     }
@@ -42,28 +47,28 @@ public class Translator
      */
     private void processToken(Expression token)
     {
-        Expression.Type tokenType = token.getType();
-
-        if(tokenType == Expression.Type.OPERAND)
-        {
-            outputExpression.add( token );
-        }
-        else if(tokenType == Expression.Type.CONST)
-        {
-            String value = token.getName();
-            token.setTypeAndValue( Expression.Type.OPERAND,
-                                    getValueOfConstant( value ).toString() );
-
-            outputExpression.add( token );
-        }
-        else if(tokenType == Expression.Type.OPERATION || tokenType == Expression.Type.OPEN_BRACKET)
-        {
-            operators.push( token );
-        }
-        else if(tokenType == Expression.Type.CLOSE_BRACKET)
-        {
-            processCloseBracketToken();
-        }
+//        Expression.Type tokenType = token.getType();
+//
+//        if(tokenType == Expression.Type.OPERAND)
+//        {
+//            outputExpression.add( token );
+//        }
+//        else if(tokenType == Expression.Type.CONST)
+//        {
+//            String value = token.getName();
+//            token.setTypeAndValue( Expression.Type.OPERAND,
+//                                    getValueOfConstant( value ).toString() );
+//
+//            outputExpression.add( token );
+//        }
+//        else if(tokenType == Expression.Type.OPERATION || tokenType == Expression.Type.OPEN_BRACKET)
+//        {
+//            operators.push( token );
+//        }
+//        else if(tokenType == Expression.Type.CLOSE_BRACKET)
+//        {
+//            processCloseBracketToken();
+//        }
     }
 
     /**
@@ -72,17 +77,17 @@ public class Translator
     private void processCloseBracketToken()
     {
         Expression top = operators.pop();
-        while( top.getType() != Expression.Type.OPEN_BRACKET )
-        {
-            if(operators.empty())
-            {
-                System.err.println("Входное выражение " + inputExpression + " некорректно");
-                System.exit(1);
-            }
-
-            outputExpression.add( top );
-            top = operators.pop();
-        }
+//        while( top.getType() != Expression.Type.OPEN_BRACKET )
+//        {
+//            if(operators.empty())
+//            {
+//                System.err.println("Входное выражение " + inputExpression + " некорректно");
+//                System.exit(1);
+//            }
+//
+//            outputExpression.add( top );
+//            top = operators.pop();
+//        }
     }
 
     /**

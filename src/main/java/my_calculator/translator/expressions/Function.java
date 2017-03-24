@@ -8,15 +8,15 @@ public class Function implements Computational
     enum FunctionType {NONE, SIN, COS, TAN, COTAN, POW}
 
     private FunctionType    type = FunctionType.NONE;
-    private double[]        parametres = null;
+    private Double[]        parametres = null;
 
-    Function(String literal)
+    public Function(String literal)
     {
         type = ExpressionsSet.getFunctionTypeByLiteral(literal);
     }
 
     @Override
-    public void setParametres(double[] parametres)
+    public void setParametres(Double[] parametres)
     {
         if( isCorrectParametresCount(parametres.length) )
         {
@@ -40,6 +40,12 @@ public class Function implements Computational
             System.err.println("Параметры для операции не были установлены до расчета");
             return 0.0;
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        return type + " " + getValue().toString();
     }
 
     /**

@@ -1,8 +1,6 @@
 package my_calculator.translator;
 
-import my_calculator.translator.expressions.Bracket;
-import my_calculator.translator.expressions.Expression;
-import my_calculator.translator.expressions.Operand;
+import my_calculator.translator.expressions.*;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -58,7 +56,19 @@ public class Translator
 
             outputExpression.add( new Operand(value));
         }
-        else if(tokenType == Expression.Type.OPERATION || tokenType == Expression.Type.FUNCTION)
+        else if(tokenType == Expression.Type.OPERATION)
+        {
+            if(token instanceof Operation)
+            {
+                Operation oToken = (Operation) token;
+                Computational topOperation = (Computational) operators.peek();
+
+                if(oToken.getPriority() < topOperation.getPriority())
+                    outputExpression.add( operators.pop() );
+            }
+            operators.push( token );
+        }
+        else if(tokenType == Expression.Type.FUNCTION)
         {
             operators.push( token );
         }

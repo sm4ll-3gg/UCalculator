@@ -5,10 +5,13 @@ package my_calculator.translator.expressions;
  */
 public class Operation implements Computational
 {
-    enum OperationType {NONE, PLUS, MINUS, MULTIPLICATION, DIVISION, POWER}
+    enum OperationType
+    {
+        NONE, PLUS, MINUS, MULTIPLICATION, DIVISION, POWER
+    }
 
-    private OperationType   type = OperationType.NONE;
-    private Double[]        parametres = null;
+    private OperationType type = OperationType.NONE;
+    private Double[] parametres = null;
 
     /**
      * @param literal литерал данной операции
@@ -19,13 +22,18 @@ public class Operation implements Computational
     }
 
     @Override
-    public Type getType() { return Type.OPERATION; }
+    public Type getType()
+    {
+        return Type.OPERATION;
+    }
 
     @Override
     public Double getValue()
     {
-        if( parametres != null )
+        if (parametres != null)
+        {
             return calculateResult();
+        }
         else
         {
             System.err.println("Параметры для операции не были установлены до расчета");
@@ -36,10 +44,16 @@ public class Operation implements Computational
     @Override
     public void setParametres(Double[] parametres)
     {
-        if( isCorrectParametresCount(parametres.length) )
+        if (isCorrectParametresCount(parametres.length))
         {
             this.parametres = parametres;
         }
+    }
+
+    @Override
+    public int getParametresCount()
+    {
+        return 2;
     }
 
     @Override
@@ -49,14 +63,23 @@ public class Operation implements Computational
     }
 
     @Override
-    public int getParametresCount()
+    public int getPriority()
     {
-        return 2;
+        if (type == OperationType.PLUS || type == OperationType.MINUS )
+        {
+            return 1;
+        }
+        else if( type == OperationType.DIVISION || type == OperationType.MULTIPLICATION || type == OperationType.POWER)
+        {
+            return 2;
+        }
+        else return 0;
     }
 
     /**
      * Проверяет корректное ли количество параметров count
      * передано для данной операции
+     *
      * @return true, если количество параметров коректно.
      * В противном случае возвращает false
      */
@@ -67,6 +90,7 @@ public class Operation implements Computational
 
     /**
      * Рассчитывает результат выражение
+     *
      * @return результат
      */
     private double calculateResult()
@@ -82,7 +106,7 @@ public class Operation implements Computational
             case DIVISION:
                 return parametres[1] / parametres[0];
             case POWER:
-                return StrictMath.pow( parametres[1], parametres[0] );
+                return StrictMath.pow(parametres[1], parametres[0]);
             default:
                 System.err.println("Ошибка при вычислении результата выражения");
                 return 0;

@@ -42,6 +42,12 @@ public class Function implements Computational
     }
 
     @Override
+    public int getPriority()
+    {
+        return Integer.MAX_VALUE; // У функций максимальный приоритет
+    }
+
+    @Override
     public Type getType()
     {
         return Type.FUNCTION;

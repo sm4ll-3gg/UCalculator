@@ -12,5 +12,17 @@ public interface Computational extends Expression
      */
     void setParametres(Double[] parametres);
 
+    /**
+     * Возвращает количество параметров, необходимое
+     * для рассчета данного выражения
+     * @return челочисленное количество параметров
+     */
     int getParametresCount();
+
+    /**
+     * Возвращает приоритет операции от 1 до N,
+     * где N - максимальный приортиет
+     * @return целочисленное значение приоритета операции
+     */
+    int getPriority();
 }

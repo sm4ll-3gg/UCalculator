@@ -14,13 +14,11 @@ import java.util.Stack;
  */
 public class Calculator
 {
-    //Properties
     private String infixExpression;
     private ArrayList<Expression> postfixExpression = new ArrayList<>();
     private Stack<Expression> operands = new Stack<>();
     private double result = 0.0;
 
-    //Methods
     Calculator()
     {
         infixExpression = "";
@@ -31,18 +29,29 @@ public class Calculator
         infixExpression = expression.toLowerCase();
     }
 
+    /**
+     * Возвращает исходное выражение в
+     * инфиксной форме записи
+     * @return выражение
+     */
     public String getInfixExpression()
     {
         return infixExpression;
     }
 
+    /**
+     * Устанавливает исходное выражение
+     * инфиксной форме записи
+     * @param infixExpression устанавливаемое выражение
+     */
     public void setInfixExpression(String infixExpression)
     {
         this.infixExpression = infixExpression.toLowerCase();
     }
 
     /**
-     * @return переданное выражение в постфиксной форме
+     * Возвращает исходное выражение в постфиксной форме записи
+     * @return исходное выражение
      */
     public String getPostfixExpression()
     {
@@ -51,7 +60,6 @@ public class Calculator
 
     /**
      * Возвращает результат вычислений
-     *
      * @return результат
      */
     public double getResult()
@@ -76,7 +84,6 @@ public class Calculator
     /**
      * В зависимости от значения токена,
      * добавляет его на стек или в выходное выражение
-     *
      * @param token Обрабатываемый токен
      */
     private void processToken(Expression token)
@@ -98,7 +105,6 @@ public class Calculator
 
     /**
      * Выполняет операцию и кладет результат на вершину стека
-     *
      * @param expr литерал операции или имя функции
      */
     private void executeOperation(Expression expr)
@@ -120,6 +126,11 @@ public class Calculator
         }
     }
 
+    /**
+     * Вычисляет значение функции и кладет результат
+     * на вержину стека
+     * @param expr функция
+     */
     private void executeFunction(Expression expr)
     {
         if (expr.getType() == Expression.Type.FUNCTION)
@@ -133,6 +144,11 @@ public class Calculator
         }
     }
 
+    /**
+     * Возвращает массив параметров для функции/операции
+     * @param count нужное количество парамтров
+     * @return массив вещественных чисел
+     */
     private Double[] getParametres(int count)
     {
         ArrayList<Double> parametres = new ArrayList<>();

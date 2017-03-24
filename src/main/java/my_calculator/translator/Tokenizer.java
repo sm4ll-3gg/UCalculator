@@ -36,8 +36,7 @@ class Tokenizer
                 tokenName.append(c);
         }
 
-        if( !addWord() ) // Добавление последнего слова
-            System.err.println("Проблема при добавлении последнего слова в " + getClass().getName());
+        addToken(); // Добавление последнего слова
 
         return tokens;
     }
@@ -72,7 +71,7 @@ class Tokenizer
         {
             if( state != State.WORD)
             {
-                addWord();
+                addToken();
                 state = State.WORD;
             }
             return true;
@@ -81,7 +80,7 @@ class Tokenizer
         {
             if( isParametr )
             {
-                addWord();
+                addToken();
             }
             else System.err.println("Лишняя запятая");
 
@@ -94,7 +93,7 @@ class Tokenizer
         }
         else if( c.equals(' ') )
         {
-            addWord();
+            addToken();
             state = State.NONE;
             return false;
         }
@@ -102,7 +101,7 @@ class Tokenizer
         {
             if(state != State.UNDEFINED)
             {
-                addWord();
+                addToken();
                 state = State.UNDEFINED;
             }
             return true;
@@ -110,15 +109,24 @@ class Tokenizer
         }
     }
 
+    /**
+     * Обрабатывает изменение состояния, если
+     * встречено число
+     */
     private void processDigit()
     {
         if( state != State.NUMBER )
         {
-            addWord();
+            addToken();
             state = State.NUMBER;
         }
     }
 
+    /**
+     * Обрабатывает изменение состояния, если
+     * встречена скобка
+     * @param c литерал скобки
+     */
     private void processBracket(Character c)
     {
          Bracket.BracketType bracketType = ExpressionsSet.getBracketTypeByLiteral(c);
@@ -128,7 +136,7 @@ class Tokenizer
              String token = tokenName.toString();
              if( ExpressionsSet.getExpressionType(token) == ExpressionsSet.ExpressionType.FUNCTION )
              {
-                 addWord();
+                 addToken();
                  isParametr = true;
              }
              else
@@ -138,7 +146,7 @@ class Tokenizer
          }
          else
          {
-             addWord();
+             addToken();
 
              if( isParametr && bracketType == Bracket.BracketType.CLOSE)
                  isParametr = false;
@@ -147,10 +155,13 @@ class Tokenizer
          state = State.BRACKET;
     }
 
-    private boolean addWord()
+    /**
+     * Добавляет токен в итоговое выражение
+     */
+    private void addToken()
     {
         if( tokenName.toString().isEmpty() )
-            return false;
+            return;
 
         String value = tokenName.toString();
         tokenName = new StringBuilder();
@@ -178,7 +189,5 @@ class Tokenizer
                     System.err.println("Неизвестное выражение");
                 break;
         }
-
-        return true;
     }
 }

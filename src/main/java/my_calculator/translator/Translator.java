@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 /**
- * Переводит выражение из инфиксной формы записи в постфиксную
+ * Отвечает за перевод выражения
+ * из инфиксной формы записи в постфиксную
  */
 public class Translator
 {
@@ -20,7 +21,8 @@ public class Translator
     public Translator(String expression) { inputExpression = expression; }
 
     /**
-     * @return Возвращает выражение в постфиксной форме записи0
+     * Переводит выражение из инфиксной формы записи в постфиксную
+     * @return выражение в постфиксной форме записи0
      */
     public ArrayList<Expression> translateToPostfixNotation()
     {
@@ -83,7 +85,7 @@ public class Translator
     }
 
     /**
-     * Обработать токен закрывающейся скобки
+     * Обрабатывает токен закрывающейся скобки
      */
     private void processCloseBracketToken()
     {
@@ -101,6 +103,13 @@ public class Translator
         }
     }
 
+    /**
+     * Проверяет является ли переданный
+     * токен открывающейся скобкой
+     * @param token проверяемый токен
+     * @return true, если токен является скобкой.
+     * В противном случае возвращает false;
+     */
     private boolean isOpenBracketToken(Expression token)
     {
         if( token instanceof Bracket )

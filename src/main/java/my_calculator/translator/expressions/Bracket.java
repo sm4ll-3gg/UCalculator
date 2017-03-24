@@ -6,7 +6,6 @@ package my_calculator.translator.expressions;
 public class Bracket implements Expression
 {
     public enum BracketType {NONE, OPEN, CLOSE}
-
     private BracketType bracketType = BracketType.NONE;
 
     public Bracket(String c) { setTypesByLiteral(c); }

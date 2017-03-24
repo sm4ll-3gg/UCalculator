@@ -9,7 +9,7 @@ public class Bracket implements Expression
 
     private BracketType bracketType = BracketType.NONE;
 
-    public Bracket(char c) { setTypesByLiteral(c); }
+    public Bracket(String c) { setTypesByLiteral(c); }
 
     @Override
     public TypeOfExpression getType() { return TypeOfExpression.BRACKET; }
@@ -33,14 +33,14 @@ public class Bracket implements Expression
      * Устанавливает тип выражения и тип скобки в зависимости от литерала
      * @param literal литерал скобки
      */
-    private void setTypesByLiteral(char literal)
+    private void setTypesByLiteral(String literal)
     {
         switch (literal)
         {
-            case '(':
+            case "(":
                 bracketType = BracketType.OPEN;
                 break;
-            case ')':
+            case ")":
                 bracketType = BracketType.CLOSE;
                 break;
             default:

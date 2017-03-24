@@ -18,7 +18,6 @@ public class Operand implements Expression
     @Override
     public Double getValue() { return value; }
 
-
     @Override
     public String toString()
     {

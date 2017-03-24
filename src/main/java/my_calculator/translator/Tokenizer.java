@@ -10,13 +10,13 @@ import java.util.ArrayList;
  */
 class Tokenizer
 {
-    private enum State {NONE, UNDEFINED, NUMBER, OPERATION, WORD, PARAMETRES}
+    private enum State {NONE, UNDEFINED, NUMBER, WORD, BRACKET}
 
     private ArrayList<Expression>   tokens = new ArrayList<>();
     private StringBuilder           tokenName = new StringBuilder();
-    private ArrayList<Double>       parametres = null; //
 
     private boolean                 wasThereRadixPoint = false; // Был ли уже десятичный разделитель
+    private boolean                 isParametr = false; // Является ли данное выражение параметром функции
     private State                   state = State.NONE;
 
     private String                  inputExpression;
@@ -35,14 +35,10 @@ class Tokenizer
 
             if( switchState(c) )
                 tokenName.append(c);
-
-            //}
-//            else
-//                System.err.println("Проблема при смене состояния в " + getClass().getName());
         }
 
-//        if( !addWord() ) // Добавление последнего слова
-//            System.err.println("Проблема при добавлении последнего слова в " + getClass().getName());
+        if( !addWord() ) // Добавление последнего слова
+            System.err.println("Проблема при добавлении последнего слова в " + getClass().getName());
 
         return tokens;
     }
@@ -62,7 +58,7 @@ class Tokenizer
         }
         else if( c.equals('.') )
         {
-            if( ( state == State.NUMBER || state == State.PARAMETRES ) && !wasThereRadixPoint )
+            if( state == State.NUMBER && !wasThereRadixPoint )
             {
                 wasThereRadixPoint = true;
                 return true;
@@ -84,22 +80,18 @@ class Tokenizer
         }
         else if( c.equals(',') )
         {
-            if( state == State.PARAMETRES)
+            if( isParametr )
             {
-                if(parametres == null)
-                    parametres = new ArrayList<>();
-
-                Double parametr = Double.parseDouble( tokenName.toString() );
-                parametres.add(parametr);
-                tokenName = new StringBuilder();
+                addWord();
             }
+            else System.err.println("Лишняя запятая");
+
             return false;
         }
         else if( c.equals('(') || c.equals(')') )
         {
-            addWord();
             processBracket(c);
-            return false;
+            return true;
         }
         else if( c.equals(' ') )
         {
@@ -121,7 +113,7 @@ class Tokenizer
 
     private void processDigit()
     {
-        if( state != State.NUMBER && state != State.PARAMETRES )
+        if( state != State.NUMBER )
         {
             addWord();
             state = State.NUMBER;
@@ -138,7 +130,7 @@ class Tokenizer
              if( ExpressionsSet.getExpressionType(token) == ExpressionsSet.ExpressionType.FUNCTION )
              {
                  addWord();
-                 state = State.PARAMETRES;
+                 isParametr = true;
              }
              else
              {
@@ -147,11 +139,11 @@ class Tokenizer
          }
          else
          {
-             if( state == State.PARAMETRES)
-                 state = State.NONE;
-             else
-                tokens.add(new Bracket(c));
+             if( isParametr && type == Bracket.BracketType.CLOSE)
+                 isParametr = false;
          }
+
+         state = State.BRACKET;
     }
 
     private boolean addWord()
@@ -175,6 +167,9 @@ class Tokenizer
                     tokens.add( new Function(value) );
                 else System.err.println("Неизвестное слово");
                 break;
+            case BRACKET:
+                tokens.add( new Bracket(value) );
+                break;
             case UNDEFINED:
                 if(type == ExpressionsSet.ExpressionType.OPERATION)
                     tokens.add( new Operation(value) );
@@ -182,149 +177,7 @@ class Tokenizer
                     System.err.println("Неизвестное выражение");
                 break;
         }
-//        String value = tokenName.toString();
-//        if(value.isEmpty()) return true;
-//
-//        Expression.Type type = Expression.Type.NONE;
-//
-//        switch (state)
-//        {
-//            case NUMBER:
-//                wasThereRadixPoint = false;
-//                type = Expression.Type.OPERAND;
-//                break;
-//            case OPERATION:
-//                type = Expression.Type.OPERATION;
-//                break;
-//            case WORD:
-//                String word = value.toLowerCase();
-//                if( OperationsSet.isFuncrion( word ) )
-//                    type = Expression.Type.OPERATION;
-//                else if( OperationsSet.isConstant( word) )
-//                    type = Expression.Type.CONST;
-//                else return false;
-//                break;
-//            case OPEN_BRACKET:
-//                type = Expression.Type.OPEN_BRACKET;
-//                break;
-//            case CLOSE_BRACKET:
-//                type = Expression.Type.CLOSE_BRACKET;
-//                break;
-//            default:
-//                System.err.println("Ложное срабатываение Tokenizer.addWord()"); // Throw
-//                System.exit(1);
-//        }
-//
-//        Expression p = new Expression( type, value );
-//        tokens.add(p);
-//        tokenName = new StringBuilder();
-//
+
         return true;
     }
 }
-
-
-//    private boolean switchState(Character c)
-//    {
-//        boolean isOk = true;
-//
-//        if( Character.isDigit(c) )
-//        {
-//            if( state != State.NUMBER)
-//            {
-//                isOk = switchState(State.NUMBER, c);
-//            }
-//        }
-//        else if(c == '.')
-//        {
-//            if(state == State.NUMBER && !wasThereRadixPoint)
-//                wasThereRadixPoint = true;
-//            else
-//            {
-//                System.err.println("Входное выражение некорректно"); // Throw
-//                return false;
-//            }
-//        }
-//        else if( c == '(' || c == ')' || c == '[' || c == ']' )
-//        {
-//            isOk = switchState( ExpressionsSet.getBracketTypeByLiteral(c) );
-//        }
-//
-//        if( Character.isDigit(c) )
-//        {
-//            if( state != State.NUMBER)
-//            {
-//                isOk = switchState(State.NUMBER, c);
-//            }
-//        }
-//        else if(c == '.')
-//        {
-//            if(state == State.NUMBER && !wasThereRadixPoint)
-//                wasThereRadixPoint = true;
-//            else
-//            {
-//                System.err.println("Входное выражение некорректно"); // Throw
-//                return false;
-//            }
-//        }
-//        else if( c == ' ' || c == ';')
-//        {
-//            isOk = switchState(State.NONE, c);
-//        }
-//        else if( c == '(' || c == '[')
-//        {
-//            isOk = switchState(State.OPEN_BRACKET, c);
-//        }
-//        else if( c == ')' || c == ']')
-//        {
-//            isOk = switchState(State.CLOSE_BRACKET, c);
-//        }
-//        else
-//        {
-//            if( state != State.WORD)
-//            {
-//                isOk = switchState(State.WORD, c);
-//            }
-//        }
-//
-//        return isOk;
-//    }
-//
-//    /**
-//     * Меняет текущее состояние
-//     * @param newState новое состояние
-//     * @param character символ, на котором происходит смена состояния
-//     * @return true, если состояние было успешно изменено.
-//     * В противном случае возвращает false
-//     */
-//    private boolean switchState(State newState, Character character)
-//    {
-//        if( isNewStateExprected(newState, character) )
-//        {
-//            boolean isOk = addWord();
-//            state = newState;
-//
-//            return isOk;
-//        }
-//        else return false;
-//    }
-
-//
-//    /**
-//     * Проверяет особые случаи, когда изменение состояния
-//     * должно быть предсказуемо
-//     * @param newState потенциальное новое состояние
-//     * @param character символ, на котором меняется состояние
-//     * @return true, если состояние может быть изменено на новое.
-//     * В противном случае возвращает false
-//     */
-//    private boolean isNewStateExprected(State newState, Character character)
-//    {
-//        if(state == State.WORD &&
-//           OperationsSet.isFuncrion( tokenName.toString() ))
-//        {
-//            // Операнды функций должны быть в круглых скобках
-//            return newState == State.OPEN_BRACKET && character.equals('(');
-//        }
-//        else return true;
-//    }

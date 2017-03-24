@@ -12,7 +12,7 @@ public class Bracket implements Expression
     public Bracket(String c) { setTypesByLiteral(c); }
 
     @Override
-    public TypeOfExpression getType() { return TypeOfExpression.BRACKET; }
+    public Expression.Type getType() { return Expression.Type.BRACKET; }
 
     @Override
     public Double getValue() { return null; }

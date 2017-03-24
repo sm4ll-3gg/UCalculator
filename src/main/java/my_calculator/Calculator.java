@@ -1,7 +1,7 @@
 package my_calculator;
 
-import my_calculator.translator.Expression;
 import my_calculator.translator.Translator;
+import my_calculator.translator.expressions.Expression;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -41,8 +41,12 @@ public class Calculator
     public void calculate()
     {
         Translator translator = new Translator(infixExpression);
-/*        postfixExpression = */translator.translateToPostfixNotation();
-//
+        postfixExpression = translator.translateToPostfixNotation();
+
+        for(Expression ex: postfixExpression)
+        {
+            System.out.print(ex + "___");
+        }
 //        for(Expression token: postfixExpression)
 //        {
 //            processToken(token);
@@ -58,15 +62,15 @@ public class Calculator
      */
     private void processToken(Expression token)
     {
-        Expression.Type tokenType = token.getType();
-        if(tokenType == Expression.Type.OPERAND)
-        {
-            operands.push( token.getName() );
-        }
-        else if(tokenType == Expression.Type.OPERATION)
-        {
-            executeOperation( token.getName() );
-        }
+//        Expression.BracketType tokenType = token.getType();
+//        if(tokenType == Expression.BracketType.OPERAND)
+//        {
+//            operands.push( token.getName() );
+//        }
+//        else if(tokenType == Expression.BracketType.OPERATION)
+//        {
+//            executeOperation( token.getName() );
+//        }
     }
 
     /**

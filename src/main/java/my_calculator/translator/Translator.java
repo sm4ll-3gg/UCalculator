@@ -1,6 +1,8 @@
 package my_calculator.translator;
 
+import my_calculator.translator.expressions.Bracket;
 import my_calculator.translator.expressions.Expression;
+import my_calculator.translator.expressions.Operand;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -29,13 +31,10 @@ public class Translator
         Tokenizer tokenizer = new Tokenizer(inputExpression);
         ArrayList<Expression> tokens = tokenizer.getTokens();
 
-        for(Expression exp : tokens)
-            System.out.println(exp + " ");
-//
-//        for(Expression token: tokens) processToken( token );
-//
-//        while(!operators.empty())
-//            outputExpression.add( operators.pop() );
+        for(Expression token: tokens) processToken( token );
+
+        while(!operators.empty())
+            outputExpression.add( operators.pop() );
 
         return outputExpression;
     }
@@ -47,28 +46,30 @@ public class Translator
      */
     private void processToken(Expression token)
     {
-//        Expression.Type tokenType = token.getType();
-//
-//        if(tokenType == Expression.Type.OPERAND)
-//        {
-//            outputExpression.add( token );
-//        }
-//        else if(tokenType == Expression.Type.CONST)
-//        {
-//            String value = token.getName();
-//            token.setTypeAndValue( Expression.Type.OPERAND,
-//                                    getValueOfConstant( value ).toString() );
-//
-//            outputExpression.add( token );
-//        }
-//        else if(tokenType == Expression.Type.OPERATION || tokenType == Expression.Type.OPEN_BRACKET)
-//        {
-//            operators.push( token );
-//        }
-//        else if(tokenType == Expression.Type.CLOSE_BRACKET)
-//        {
-//            processCloseBracketToken();
-//        }
+        Expression.Type tokenType = token.getType();
+
+        if(tokenType == Expression.Type.OPERAND)
+        {
+            outputExpression.add( token );
+        }
+        else if(tokenType == Expression.Type.CONSTANT)
+        {
+            Double value = token.getValue();
+
+            outputExpression.add( new Operand(value));
+        }
+        else if(tokenType == Expression.Type.OPERATION || tokenType == Expression.Type.FUNCTION)
+        {
+            operators.push( token );
+        }
+        else if(tokenType == Expression.Type.BRACKET)
+        {
+            Bracket bracket = (Bracket) token;
+            if( bracket.getBracketType() == Bracket.BracketType.OPEN )
+                operators.push( token );
+            else if( bracket.getBracketType() == Bracket.BracketType.CLOSE )
+                processCloseBracketToken();
+        }
     }
 
     /**
@@ -77,40 +78,28 @@ public class Translator
     private void processCloseBracketToken()
     {
         Expression top = operators.pop();
-//        while( top.getType() != Expression.Type.OPEN_BRACKET )
-//        {
-//            if(operators.empty())
-//            {
-//                System.err.println("Входное выражение " + inputExpression + " некорректно");
-//                System.exit(1);
-//            }
-//
-//            outputExpression.add( top );
-//            top = operators.pop();
-//        }
+        while(!isOpenBracketToken(top) )
+        {
+            if(operators.empty())
+            {
+                System.err.println("Входное выражение " + inputExpression + " некорректно");
+                System.exit(1);
+            }
+
+            outputExpression.add( top );
+            top = operators.pop();
+        }
     }
 
-    /**
-     * Возвращает значение переданной констатны
-     * @param constant строка, содержащая литерал константы
-     * @return значение данной константы
-     */
-    private Double getValueOfConstant(String constant)
+    private boolean isOpenBracketToken(Expression token)
     {
-        if( OperationsSet.isConstant(constant) )
+        if( token instanceof Bracket )
         {
-            if( constant.equals("e") )
-                return StrictMath.E;
-            else if( constant.equals("pi") )
-                return StrictMath.PI;
-        }
-        else
-        {
-            System.err.println("Переданное значение не является константой " + constant);
-            System.exit(1);
+            Bracket bracket = (Bracket) token;
+
+            return  bracket.getBracketType() == Bracket.BracketType.OPEN;
         }
 
-        System.err.println("Переданная константа не поддерживается " + constant);
-        return 0.0;
+        return  false;
     }
 }

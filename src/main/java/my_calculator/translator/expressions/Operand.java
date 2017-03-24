@@ -12,8 +12,13 @@ public class Operand implements Expression
         value = Double.parseDouble(oValue);
     }
 
+    public Operand(Double oValue)
+    {
+        value = oValue;
+    }
+
     @Override
-    public TypeOfExpression getType() { return TypeOfExpression.OPERAND; }
+    public Type getType() { return Type.OPERAND; }
 
     @Override
     public Double getValue() { return value; }
@@ -21,6 +26,6 @@ public class Operand implements Expression
     @Override
     public String toString()
     {
-        return getType() + " " + getValue().toString();
+        return getValue().toString();
     }
 }

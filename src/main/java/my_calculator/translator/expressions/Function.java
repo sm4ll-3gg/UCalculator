@@ -25,9 +25,9 @@ public class Function implements Computational
     }
 
     @Override
-    public TypeOfExpression getType()
+    public Type getType()
     {
-        return TypeOfExpression.FUNCTION;
+        return Type.FUNCTION;
     }
 
     @Override

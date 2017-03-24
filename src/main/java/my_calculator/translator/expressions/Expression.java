@@ -5,13 +5,13 @@ package my_calculator.translator.expressions;
  */
 public interface Expression
 {
-    enum TypeOfExpression {NONE, CONSTANT, OPERAND, OPERATION, FUNCTION, BRACKET}
+    enum Type {NONE, CONSTANT, OPERAND, OPERATION, FUNCTION, BRACKET}
 
     /**
      * Возвращает тип данного математического выражения
      * @return тип выражения
      */
-    TypeOfExpression getType();
+    Type getType();
 
     /**
      * Вычисляет значение математического выражения

@@ -1,7 +1,6 @@
 package my_calculator.translator;
 
 import my_calculator.translator.expressions.*;
-import my_calculator.translator.expressions.Expression;
 
 import java.util.ArrayList;
 
@@ -122,9 +121,9 @@ class Tokenizer
 
     private void processBracket(Character c)
     {
-         Bracket.BracketType type = ExpressionsSet.getBracketTypeByLiteral(c);
+         Bracket.BracketType bracketType = ExpressionsSet.getBracketTypeByLiteral(c);
 
-         if(type == Bracket.BracketType.OPEN && state == State.WORD)
+         if(bracketType == Bracket.BracketType.OPEN && state == State.WORD)
          {
              String token = tokenName.toString();
              if( ExpressionsSet.getExpressionType(token) == ExpressionsSet.ExpressionType.FUNCTION )
@@ -141,7 +140,7 @@ class Tokenizer
          {
              addWord();
 
-             if( isParametr && type == Bracket.BracketType.CLOSE)
+             if( isParametr && bracketType == Bracket.BracketType.CLOSE)
                  isParametr = false;
          }
 

@@ -19,7 +19,7 @@ public class Operation implements Computational
     }
 
     @Override
-    public TypeOfExpression getType() { return TypeOfExpression.OPERATION; }
+    public Type getType() { return Type.OPERATION; }
 
     @Override
     public Double getValue()

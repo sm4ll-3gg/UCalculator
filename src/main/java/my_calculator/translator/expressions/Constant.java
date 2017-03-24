@@ -15,9 +15,9 @@ public class Constant implements Expression
     }
 
     @Override
-    public TypeOfExpression getType()
+    public Type getType()
     {
-        return TypeOfExpression.CONSTANT;
+        return Type.CONSTANT;
     }
 
     @Override

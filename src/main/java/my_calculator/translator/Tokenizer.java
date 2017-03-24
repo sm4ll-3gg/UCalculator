@@ -139,6 +139,8 @@ class Tokenizer
          }
          else
          {
+             addWord();
+
              if( isParametr && type == Bracket.BracketType.CLOSE)
                  isParametr = false;
          }

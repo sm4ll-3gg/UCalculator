@@ -37,7 +37,7 @@ public class Function implements Computational
             return calculateResult();
         else
         {
-            System.err.println("Параметры для операции не были установлены до расчета");
+            System.err.println("Параметры функции не были установлены до расчета");
             return 0.0;
         }
     }
@@ -45,7 +45,7 @@ public class Function implements Computational
     @Override
     public String toString()
     {
-        return type + " " + getValue().toString();
+        return type.toString();
     }
 
     /**

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5bfcd49-0c26-4caf-b144-7d95e08b2e8b" name="Default" comment="">
+    <list default="true" id="f5bfcd49-0c26-4caf-b144-7d95e08b2e8b" name="Default" comment="Удаление остатков старого алгоритма токенезации">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Expression.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/OperationsSet.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input.txt" afterPath="$PROJECT_DIR$/input.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java" afterPath="$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,7 +35,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Tokenizer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tokenizer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -48,8 +50,8 @@
       <file leaf-file-name="Translator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="24" column="33" lean-forward="false" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,12 +72,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Calculator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Calculator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="187">
+              <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/input.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -184,8 +188,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/ExpressionsSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Computational.java" />
-        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Constant.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operation.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Operand.java" />
@@ -194,6 +196,8 @@
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Bracket.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java" />
         <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java" />
         <option value="$PROJECT_DIR$/input.txt" />
       </list>
     </option>
@@ -888,7 +892,7 @@
       <workItem from="1490286907922" duration="551000" />
       <workItem from="1490287572309" duration="3718000" />
       <workItem from="1490300014320" duration="7864000" />
-      <workItem from="1490341456207" duration="8090000" />
+      <workItem from="1490341456207" duration="8524000" />
     </task>
     <task id="LOCAL-00001" summary="Преобразование выражения в постфиксную форму Рефакторинг кода">
       <created>1490027400908</created>
@@ -974,11 +978,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490352874267</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Фикс багов токенезации">
+      <created>1490354507395</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1490354507395</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104315000" />
+    <option name="totallyTimeSpent" value="104749000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1002,7 +1013,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3887689" sideWeight="0.50213677" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22809829" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32937366" sideWeight="0.49358973" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8174946" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27321815" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937366" sideWeight="0.49786323" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1061,7 +1072,9 @@
     <MESSAGE value="Добавлено выражение скобки в множество выражений" />
     <MESSAGE value="Переделан токенайзер. Некорректная обработка функций" />
     <MESSAGE value="Исправлена поддержка функций" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправлена поддержка функций" />
+    <MESSAGE value="Фикс багов токенезации" />
+    <MESSAGE value="Удаление остатков старого алгоритма токенезации" />
+    <option name="LAST_COMMIT_MESSAGE" value="Удаление остатков старого алгоритма токенезации" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1128,16 +1141,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Tokenizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2071">
-          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/OperationsSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -1370,14 +1373,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/lang/Override.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -1464,14 +1459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/expressions/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -1491,20 +1478,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="738">
+          <caret line="1612" column="10" lean-forward="true" selection-start-line="1612" selection-start-column="10" selection-end-line="1612" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Expression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1513,6 +1506,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/translator/Translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="24" column="33" lean-forward="false" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/my_calculator/Calculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

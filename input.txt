@@ -1,1 +1,1 @@
-pow(2,10) + 2^10
+e^3+tan(pi/3)+sin(pi) *cos(pi/12)+ctg(pi*pi*(e+pi))-pi*(25+e^6*(pi-pi/6))/(3*pi+e/3)

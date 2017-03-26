@@ -63,10 +63,17 @@ public class Translator
             if(token instanceof Operation)
             {
                 Operation oToken = (Operation) token;
-                Computational topOperation = (Computational) operators.peek();
+                if( !operators.empty() )
+                {
+                    Expression top = operators.peek();
+                    if(top instanceof  Computational)
+                    {
+                        Computational topOperation = (Computational) operators.peek();
 
-                if(oToken.getPriority() < topOperation.getPriority())
-                    outputExpression.add( operators.pop() );
+                        if (oToken.getPriority() < topOperation.getPriority())
+                            outputExpression.add(operators.pop());
+                    }
+                }
             }
             operators.push( token );
         }

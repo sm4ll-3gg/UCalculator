@@ -1,10 +1,10 @@
-package my_calculator;
+package my_calculator.model;
 
-import my_calculator.translator.Translator;
-import my_calculator.translator.expressions.Expression;
-import my_calculator.translator.expressions.Function;
-import my_calculator.translator.expressions.Operand;
-import my_calculator.translator.expressions.Operation;
+import my_calculator.model.translator.Translator;
+import my_calculator.model.translator.expressions.Expression;
+import my_calculator.model.translator.expressions.Function;
+import my_calculator.model.translator.expressions.Operand;
+import my_calculator.model.translator.expressions.Operation;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -19,12 +19,12 @@ public class Calculator
     private Stack<Expression> operands = new Stack<>();
     private double result = 0.0;
 
-    Calculator()
+    public Calculator()
     {
         infixExpression = "";
     }
 
-    Calculator(String expression)
+    public Calculator(String expression)
     {
         infixExpression = expression.toLowerCase();
     }
@@ -62,7 +62,7 @@ public class Calculator
      * Возвращает результат вычислений
      * @return результат
      */
-    public double getResult()
+    public Double getResult()
     {
         return result;
     }
@@ -72,6 +72,8 @@ public class Calculator
      */
     public void calculate()
     {
+        if(infixExpression.isEmpty()) return;
+
         Translator translator = new Translator(infixExpression);
         postfixExpression = translator.translateToPostfixNotation();
 

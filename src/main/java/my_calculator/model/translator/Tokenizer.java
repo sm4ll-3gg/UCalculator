@@ -1,6 +1,6 @@
-package my_calculator.translator;
+package my_calculator.model.translator;
 
-import my_calculator.translator.expressions.*;
+import my_calculator.model.translator.expressions.*;
 
 import java.util.ArrayList;
 

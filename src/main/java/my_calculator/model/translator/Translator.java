@@ -1,6 +1,6 @@
-package my_calculator.translator;
+package my_calculator.model.translator;
 
-import my_calculator.translator.expressions.*;
+import my_calculator.model.translator.expressions.*;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -66,7 +66,7 @@ public class Translator
                 if( !operators.empty() )
                 {
                     Expression top = operators.peek();
-                    if(top instanceof  Computational)
+                    if(top instanceof Computational)
                     {
                         Computational topOperation = (Computational) operators.peek();
 

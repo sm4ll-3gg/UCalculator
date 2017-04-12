@@ -1,4 +1,4 @@
-package my_calculator.translator.expressions;
+package my_calculator.model.translator.expressions;
 
 /**
  * Класс, описывающий операцию математического выражения

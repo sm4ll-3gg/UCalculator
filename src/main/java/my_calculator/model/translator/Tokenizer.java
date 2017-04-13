@@ -81,6 +81,9 @@ class Tokenizer
             if( isParametr )
             {
                 addToken();
+
+                tokens.add( new Bracket(Bracket.BracketType.CLOSE) );
+                tokens.add( new Bracket(Bracket.BracketType.OPEN) );
             }
             else System.err.println("Лишняя запятая");
 
@@ -94,7 +97,6 @@ class Tokenizer
         else if( c.equals(' ') )
         {
             addToken();
-            state = State.NONE;
             return false;
         }
         else
@@ -137,6 +139,8 @@ class Tokenizer
              if( ExpressionsSet.getExpressionType(token) == ExpressionsSet.ExpressionType.FUNCTION )
              {
                  addToken();
+                 tokens.add( new Bracket(Bracket.BracketType.OPEN) );
+
                  isParametr = true;
              }
              else
@@ -149,7 +153,10 @@ class Tokenizer
              addToken();
 
              if( isParametr && bracketType == Bracket.BracketType.CLOSE)
+             {
+                 tokens.add( new Bracket(Bracket.BracketType.CLOSE) );
                  isParametr = false;
+             }
          }
 
          state = State.BRACKET;

@@ -31,6 +31,8 @@ public class Translator
         Tokenizer tokenizer = new Tokenizer(inputExpression);
         ArrayList<Expression> tokens = tokenizer.getTokens();
 
+        System.out.println(tokens);
+
         for(Expression token: tokens) processToken( token );
 
         while(!operators.empty())

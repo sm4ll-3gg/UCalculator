@@ -10,6 +10,8 @@ public class Bracket implements Expression
 
     public Bracket(String c) { setTypesByLiteral(c); }
 
+    public Bracket(BracketType type) { bracketType = type; }
+
     @Override
     public Expression.Type getType() { return Expression.Type.BRACKET; }
 

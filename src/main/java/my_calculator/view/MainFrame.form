@@ -25,6 +25,9 @@
           </grid>
         </constraints>
         <properties/>
+        <clientProperties>
+          <caretAspectRatio class="java.lang.Float" value="0.04"/>
+        </clientProperties>
       </component>
       <component id="f1f03" class="javax.swing.JLabel" binding="postfixExprLabel">
         <constraints>
@@ -42,7 +45,12 @@
         </constraints>
         <properties>
           <editable value="false"/>
+          <lineWrap value="true"/>
+          <wrapStyleWord value="true"/>
         </properties>
+        <clientProperties>
+          <caretAspectRatio class="java.lang.Float" value="0.04"/>
+        </clientProperties>
       </component>
       <component id="f5285" class="javax.swing.JLabel" binding="resultLabel">
         <constraints>
@@ -61,6 +69,9 @@
         <properties>
           <editable value="false"/>
         </properties>
+        <clientProperties>
+          <caretAspectRatio class="java.lang.Float" value="0.04"/>
+        </clientProperties>
       </component>
       <component id="23d2b" class="javax.swing.JButton" binding="calculateButton">
         <constraints>
